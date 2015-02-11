@@ -17,6 +17,17 @@
 
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
+
+// Connect to mysql database
+const $server = "127.0.0.1";
+const $username = "0910336";
+const $password = "0910336";
+$conn = new mysqli($server, $username, $password); 
+// Check mysql connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); 
+}
+
 //use the Arel Helper to start the output with arel
 //start output
 ArelXMLHelper::start(NULL, "/arel/index.html", ArelXMLHelper::TRACKING_GPS);
