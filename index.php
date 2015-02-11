@@ -26,14 +26,14 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"1", //id
 		"Migas Restaurante - Las Mercedes", //title
 		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas.gif", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas.gif", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas.gif", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas.gif", //icon
 		"Disfruta de sandwiches, ensaladas y postres en Caracas.", //description
-		array(array("Desayuno Criollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas_comida1.jpg"),
-			  array("Ensaladas", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas_comida2.jpg"),
-			  array("Desayuno Americano", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas_comida3.jpg"),
-			  array("Wraps", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas_wraps.jpg"),
-			  array("Merengadas y sandwiches", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/migas_comida4.jpg")) //buttons
+		array(array("Desayuno Criollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida1.jpg"),
+			  array("Ensaladas", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida2.jpg"),
+			  array("Desayuno Americano", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida3.jpg"),
+			  array("Wraps", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_wraps.jpg"),
+			  array("Merengadas y sandwiches", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida4.jpg")) //buttons
 	);
 
 //output the object
@@ -44,8 +44,8 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"2", //id
 		"Migas Restaurante en la web", //title
 		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/online.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/online.png", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //icon
 		array()
 	);
 
@@ -61,8 +61,8 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"3", //id
 		"Contacto Migas Restaurante", //title
 		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/call.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/call.png", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //icon
 		array()
 	);
 
@@ -74,16 +74,16 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"4", //id
 		"Mc Donalds  - La Trinidad", //title
 		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/mcdonalds.jpg", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/mcdonalds.jpg", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/mcdonalds.jpg", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/mcdonalds.jpg", //icon
 		"Restaurante de Hamburguesas. Comida rapida. Disfruta de nuestros combos", //description
-		array(array("Big Mac", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_bigmac.jpg"),
-			  array("Cuarto de Libra con Queso", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_cuartolibra.png"),
-			  array("Mc Pollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_mcpollo.jpg"),
-			  array("Mc Nuggets", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_nuggets.png"),
-			  array("Cajita Feliz", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_cajita.gif"),
-			  array("Postres", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_postres.jpg"),
-			  array("Desayunos", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/Prueba/md_desayunos.jpg")) //buttons
+		array(array("Big Mac", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_bigmac.jpg"),
+			  array("Cuarto de Libra con Queso", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_cuartolibra.png"),
+			  array("Mc Pollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_mcpollo.jpg"),
+			  array("Mc Nuggets", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_nuggets.png"),
+			  array("Cajita Feliz", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_cajita.gif"),
+			  array("Postres", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_postres.jpg"),
+			  array("Desayunos", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_desayunos.jpg")) //buttons
 	);
 
 //output the object
@@ -94,8 +94,8 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"5", //id
 		"Mc Donalds en la web", //title
 		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/online.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/online.png", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //icon
 		array() //buttons
 	);
 
@@ -111,8 +111,8 @@ $oObject = ArelXMLHelper::createLocationBasedPOI(
 		"6", //id
 		"Contacto Mc Donalds", //title
 		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/call.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/Prueba/call.png", //icon
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //thumb
+		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //icon
 		array() //buttons
 	);
 
