@@ -1,180 +1,39 @@
 <?php
-/**
- * @copyright  Copyright 2012 metaio GmbH. All rights reserved.
- * @link       http://www.metaio.com
- * @author     Frank Angermann
- * 
- * @abstract	Learn about the different types of POIs available in junaio. It is a different media type linked with each POI.
- * 				
- * 				Learnings:
- * 					- create multiple POIs within 1 channel
- * 					- use the AREL XML Helper to create the XML output
- * 					- link movie, sound or image with the POI
- * 					- create a custom HTML overlay to be referenced and opened one the custom POI is clicked
- * 					- adding parameters to the POI to be used in AREL JS
- *  			
- **/
-
+require 'restaurant.php';
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
+// Some variables
+$server = '127.0.0.1';
+$username = 'juan';
+$password = 'bigmac5!';
+$db_name = 'RA';
 
 // Connect to mysql database
-const $server = "127.0.0.1";
-const $username = "0910336";
-const $password = "0910336";
-$conn = new mysqli($server, $username, $password); 
+$conn = mysql_connect($server, $username, $password); 
 // Check mysql connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error); 
+if (!$conn) {
+    die("Connection failed: " . mysql_error()); 
+}
+// Selecting a database
+$db = mysql_select_db($db_name, $conn); 
+// Checking selection
+if (!$db) {
+    die("Could not select database: " . mysql_error()); 
 }
 
-//use the Arel Helper to start the output with arel
-//start output
-ArelXMLHelper::start(NULL, "/arel/index.html", ArelXMLHelper::TRACKING_GPS);
 
-//1. Migas POI Image
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"1", //id
-		"Migas Restaurante - Las Mercedes", //title
-		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas.gif", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas.gif", //icon
-		"Disfruta de sandwiches, ensaladas y postres en Caracas.", //description
-		array(array("Desayuno Criollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida1.jpg"),
-			  array("Ensaladas", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida2.jpg"),
-			  array("Desayuno Americano", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida3.jpg"),
-			  array("Wraps", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_wraps.jpg"),
-			  array("Merengadas y sandwiches", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/migas_comida4.jpg")) //buttons
-	);
+// Calls the database and retrieves all the restaurants in it
+$restaurants = Restaurant::all(); 
 
-//output the object
-ArelXMLHelper::outputObject($oObject);
+RestaurantInfo::startRendering(); 
 
-//2. Migas POI
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"2", //id
-		"Migas Restaurante en la web", //title
-		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //icon
-		array()
-	);
+foreach($restaurants as $res) {
 
-//add some parameters we will need with AREL
-$oObject->addParameter("description", "Visita nuestra pagina web");
-$oObject->addParameter("url", "http://www.migascafe.com");
+    $restInfo = new RestaurantInfo($res); 
+    $restInfo->render(); 
+}
 
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//3. Migas POI
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"3", //id
-		"Contacto Migas Restaurante", //title
-		array(10.482621, -66.862689, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //icon
-		array()
-	);
-
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//4. Mc Donalds POI Image
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"4", //id
-		"Mc Donalds  - La Trinidad", //title
-		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/mcdonalds.jpg", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/mcdonalds.jpg", //icon
-		"Restaurante de Hamburguesas. Comida rapida. Disfruta de nuestros combos", //description
-		array(array("Big Mac", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_bigmac.jpg"),
-			  array("Cuarto de Libra con Queso", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_cuartolibra.png"),
-			  array("Mc Pollo", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_mcpollo.jpg"),
-			  array("Mc Nuggets", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_nuggets.png"),
-			  array("Cajita Feliz", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_cajita.gif"),
-			  array("Postres", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_postres.jpg"),
-			  array("Desayunos", "imageButton", "http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/md_desayunos.jpg")) //buttons
-	);
-
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//5. Mc Donalds POI Custom
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"5", //id
-		"Mc Donalds en la web", //title
-		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/online.png", //icon
-		array() //buttons
-	);
-
-//add some parameters we will need with AREL
-$oObject->addParameter("description", "Visita nuestra pagina web");
-$oObject->addParameter("url", "http://www.mcdonalds.com.ve/");
-
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//6. Mc Donalds POI Call
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"6", //id
-		"Contacto Mc Donalds", //title
-		array(10.434526, -66.867997, 0), //location
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //thumb
-		"http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/call.png", //icon
-		array() //buttons
-	);
-
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//3. Video POI
-/*$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"3", //id
-		"Hello Video POI", //title
-		array(48.12307, 11.218636, 0), //location
-		"/resources/thumb_video.png", //thumb
-		"/resources/icon_video.png", //icon
-		"This is our Video POI", //description
-		array(array("Start Movie", "movieButton", "http://dev.junaio.com/publisherDownload/tutorial/movie.mp4")) //buttons
-	);
-
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//4. Custom POPup POI
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-		"4", //id
-		"Custom PopUp", //title
-		array(48.12317,11.218670,0), //location
-		"/resources/thumb_custom.png", //thumb
-		"/resources/icon_custom.png", //icon
-        array()
-	);
-
-//add some parameters we will need with AREL
-$oObject->addParameter("description", "This is my special POI. It will do just what I want.");
-$oObject->addParameter("url", "http://www.junaio.com");
-	
-//output the object
-ArelXMLHelper::outputObject($oObject);
-
-//5. Phone Call POI
-$oObject = ArelXMLHelper::createLocationBasedPOI(
-    "5", //id
-    "Do Phone Call", //title
-    array(48.12302,11.218644,0), //location
-    "/resources/thumb_custom.png", //thumb
-    "/resources/icon_custom.png", //icon
-    array()
-);
-
-//output the object
-ArelXMLHelper::outputObject($oObject);*/
-
-//end the output
-ArelXMLHelper::end();
+RestaurantInfo::stopRendering(); 
+mysql_close(); 
 
 ?>
