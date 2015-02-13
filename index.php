@@ -4,8 +4,8 @@ require_once './ARELLibrary/arel_xmlhelper.class.php';
 
 // Some variables
 $server = '127.0.0.1';
-$username = 'juan';
-$password = 'bigmac5!';
+$username = '';
+$password = '!';
 $db_name = 'RA';
 
 // Connect to mysql database
