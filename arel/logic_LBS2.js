@@ -3,23 +3,41 @@ arel.sceneReady(function()
 	//Just for Debuging purposes
 	//arel.Debug.activate();
 	//arel.Debug.deactivateArelLogStream();
+    
+    // AJAX call to get the number of pois
+    var nPoi; 
+    $.get("/CcsCome/controller.php?tr=1", function (data) {
+        nPoids = data; 
+    })
+
+    for (i = 0; i < nPoi; ++i) {
+        var poi = arel.Scene.getObject(i); 
+
+        // It's a contact
+        if ( i % 3 == 1) {
+            arel.Events.setListener(poi, function(obj, type, params){handlePoiCallventMigas(obj, type, params);});
+        // It's a website
+        } else if ( i % 3 == 2) { 
+            arel.Events.setListener(poi, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
+        }
+    }
 	
-    var migasPOIImage = arel.Scene.getObject("1");
-    var migasPOICustom = arel.Scene.getObject("2");
-    var migasPOICall = arel.Scene.getObject("3");
-    var mcdonaldsPOIImage = arel.Scene.getObject("4");
-    var mcdonaldsPOICustom = arel.Scene.getObject("5");
-    var mcdonaldsPOICall = arel.Scene.getObject("6");
+   /* var migasPOIImage = arel.Scene.getObject("1");*/
+    //var migasPOICustom = arel.Scene.getObject("2");
+    //var migasPOICall = arel.Scene.getObject("3");
+    //var mcdonaldsPOIImage = arel.Scene.getObject("4");
+    //var mcdonaldsPOICustom = arel.Scene.getObject("5");
+    //var mcdonaldsPOICall = arel.Scene.getObject("6");
 
 
-	//set a listener on the metaio man (custom pop up)
-	arel.Events.setListener(migasPOICustom, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
-	arel.Events.setListener(mcdonaldsPOICustom, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
-	//set a listener on the sound poi
-	//arel.Events.setListener(mcdonaldsPOI, function(obj, type, params){handlePoiSoundEvent(obj, type, params);});
-    //set a listener on the call poi
-    arel.Events.setListener(migasPOICall, function(obj, type, params){handlePoiCallventMigas(obj, type, params);});
-    arel.Events.setListener(mcdonaldsPOICall, function(obj, type, params){handlePoiCallventMcDonalds(obj, type, params);});
+	////set a listener on the metaio man (custom pop up)
+	//arel.Events.setListener(migasPOICustom, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
+	//arel.Events.setListener(mcdonaldsPOICustom, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
+	////set a listener on the sound poi
+	////arel.Events.setListener(mcdonaldsPOI, function(obj, type, params){handlePoiSoundEvent(obj, type, params);});
+    ////set a listener on the call poi
+    //arel.Events.setListener(migasPOICall, function(obj, type, params){handlePoiCallventMigas(obj, type, params);});
+    /*arel.Events.setListener(mcdonaldsPOICall, function(obj, type, params){handlePoiCallventMcDonalds(obj, type, params);});*/
 });
 
 function handleCustomPoiEvent(obj, type, param)
