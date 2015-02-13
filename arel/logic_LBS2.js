@@ -3,7 +3,7 @@ arel.sceneReady(function()
 	//Just for Debuging purposes
 	//arel.Debug.activate();
 	//arel.Debug.deactivateArelLogStream();
-	
+    //
     var migasPOIImage      = arel.Scene.getObject("1");
     var migasPOICustom     = arel.Scene.getObject("2");
     var migasPOICall       = arel.Scene.getObject("3");
