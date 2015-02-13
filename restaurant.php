@@ -245,8 +245,8 @@
                 self::$id, //id
                 $res->name." en la web", //title
                 $res->coord, 
-                self::$server_url."/images/online.png", //thumb
-                self::$server_url."/images/online.png", //icon
+                self::$server_url."/imagenes/online.png", //thumb
+                self::$server_url."/imagenes/online.png", //icon
                 array()
             );
 
@@ -268,8 +268,8 @@
                 self::$id, //id
                 "Contacto ".$res->name, //title
                 $res->coord, 
-                self::$server_url."/images/call.png", //thumb
-                self::$server_url."/images/call.png", //icon
+                self::$server_url."/imagenes/call.png", //thumb
+                self::$server_url."/imagenes/call.png", //icon
                 array()
             );
 
