@@ -1,12 +1,8 @@
 <?php 
 require 'restaurant.php';
+// Gets the number of pois to render
 if (isset($_GET['tr'])) {
-    index(); 
+    session_start();
+    echo $_SESSION['n_poi'];
 }
-
-// Return the number of POIDS to be rendered
-function index() {
-    echo RestaurantInfo::$id;
-}
-
 ?>

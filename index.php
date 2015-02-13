@@ -4,8 +4,8 @@ require_once './ARELLibrary/arel_xmlhelper.class.php';
 
 // Some variables
 $server = '127.0.0.1';
-$username = '';
-$password = '!';
+$username = 'juan';
+$password = 'bigmac5!';
 $db_name = 'RA';
 
 // Connect to mysql database
@@ -32,6 +32,9 @@ foreach($restaurants as $res) {
     $restInfo = new RestaurantInfo($res); 
     $restInfo->render(); 
 }
+
+session_start();
+$_SESSION['n_poi'] = RestaurantInfo::$id; 
 
 RestaurantInfo::stopRendering(); 
 mysql_close(); 
