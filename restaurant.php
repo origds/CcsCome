@@ -183,6 +183,41 @@ class Restaurant {
         return $restaurants; 
     }
 
+    public static function find($id) {
+        $query  = 'SELECT * FROM '.RESTAURANTS.' WHERE id="'.$id.'"'; 
+        $result = mysql_query($query); 
+
+        if (!$result) {
+            die("Query failed: " . mysql_error()); 
+        }
+
+        // Query to get the restaurant by id
+        $row = mysql_fetch_array($result);
+        $rest = new Restaurant($row['name'],$row['latitude'],
+                               $row['longitude'],$row['website'],
+                               $row['logo_path'],$row['description'],
+                               $row['phone']); 
+
+        $rest->id = $id; 
+        $rest->avg_score = $row['avg_score']; 
+        $rest->total_score = $row['total_score']; 
+        $rest->n_users = $row['total_users']; 
+
+        // Query to get all dishes associated to that restaurant
+        $queryDish = 'SELECT * FROM '.DISHES.' WHERE restaurant_id = "'.$res->id.'";';
+        $resultDish = mysql_query($queryDish); 
+        if (!$resultDish) {
+            die("Query failed: " . mysql_error()); 
+        }
+
+        while ($rowDish = mysql_fetch_array($resultDish)) {
+            $dish = new Dish($rowDish['name'], $rowDish['picture']);
+            array_push($res->dishes, $dish); 
+        }
+
+        return $rest; 
+    }
+
     public static function dish_to_array($dishes, $button) {
         $dish_array = array(); 
         foreach($dishes as $dish) {
@@ -275,6 +310,8 @@ Class RestaurantInfo {
             self::$server_url."/imagenes/call.png", //icon
             array()
         );
+        //add some parameters we will need with AREL
+        $oObject->addParameter("phone", "tel:".$res->phone);
 
         ArelXMLHelper::outputObject($oObject);
         self::$id += 1; 
