@@ -2,11 +2,12 @@
 require 'restaurant.php';
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
+
 // Some variables
-$server = '127.0.0.1';
-$username = 'juan';
-$password = 'bigmac5!';
-$db_name = 'RA';
+$server   = '127.0.0.1';
+$username = '0910336';
+$password = '0910336';
+$db_name  = 'ra';
 
 // Connect to mysql database
 $conn = mysql_connect($server, $username, $password); 

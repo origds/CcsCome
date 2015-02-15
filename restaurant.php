@@ -1,4 +1,7 @@
 <?php 
+define("RESTAURANTS", "0910336_restaurant");
+define("DISHES", "0910336_dish");
+
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
 // Class dish to handle dishes from the restaurant menu
@@ -14,7 +17,7 @@ class Dish {
 
     // Saves a dish to the database
     public function save() {
-        $query  = 'INSERT INTO dish (name, picture, restaurant_id) VALUES (';
+        $query  = 'INSERT INTO '.DISHES.' (name, picture, restaurant_id) VALUES (';
         $query .= '"'.$this->name.'",';
         $query .= '"'.$this->picture_path.'",';
         $query .= '"'.$this->restaurant_id.'")';
@@ -87,7 +90,7 @@ class Restaurant {
     // Updates all attributes of the restaurant with id $this->id except for the dishes
     // (All attributes because we don't have a lot)
     public function update() {
-        $query = 'UPDATE restaurant SET ';
+        $query = 'UPDATE '.RESTAURANTS.' SET ';
 
         $query .= 'name="'. $this->name . '",';
         $query .= 'latitude="'. $this->coord[0] . '",';
@@ -109,7 +112,7 @@ class Restaurant {
 
     // Stores a new restaurant in the database
     public function save() {
-        $query = 'INSERT INTO restaurant (name, latitude,';
+        $query = 'INSERT INTO '.RESTAURANTS.' (name, latitude,';
         $query .= ' longitude, website, logo_path, avg_score,';
         $query .= ' total_score, total_users, description, phone) VALUES (';
         $query .= '"'. $this->name . '",';
@@ -145,7 +148,7 @@ class Restaurant {
     // Retrieves all the restaurants from the database
     public static function all() {
 
-        $query = 'SELECT * FROM restaurant;';
+        $query = 'SELECT * FROM '.RESTAURANTS.';';
         $result = mysql_query($query); 
         if (!$result) {
             die("Query failed: " . mysql_error()); 
@@ -164,7 +167,7 @@ class Restaurant {
             $res->total_score = $row['total_score'];
             $res->n_users     = $row['total_users'];
 
-            $queryDish = 'SELECT * FROM dish WHERE restaurant_id = "'.$res->id.'";';
+            $queryDish = 'SELECT * FROM '.DISHES.' WHERE restaurant_id = "'.$res->id.'";';
             $resultDish = mysql_query($queryDish); 
             if (!$resultDish) {
                 die("Query failed: " . mysql_error()); 

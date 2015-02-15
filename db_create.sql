@@ -1,4 +1,4 @@
-CREATE TABLE `restaurant` (
+CREATE TABLE `0910336_restaurant` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(50) NOT NULL,
     `latitude` double(10,6) NOT NULL,
@@ -13,12 +13,12 @@ CREATE TABLE `restaurant` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `dish` (
+CREATE TABLE `0910336_dish` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
     `picture` varchar(100) DEFAULT NULL,
     `restaurant_id` int(11) NOT NULL,
     PRIMARY KEY (`id`),
     KEY `fk_restaurant_id` (`restaurant_id`),
-    CONSTRAINT `fk_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`ID`)
+    CONSTRAINT `fk_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `0910336_restaurant` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
