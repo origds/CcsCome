@@ -33,8 +33,6 @@ foreach($restaurants as $res) {
     $restInfo->render(); 
 }
 
-$_SESSION['n_poi'] = RestaurantInfo::$id; 
-
 RestaurantInfo::stopRendering(); 
 mysql_close(); 
 
