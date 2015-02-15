@@ -14,6 +14,7 @@ arel.sceneReady(function() {
 
         // It's a contact
         if ( id % 3 == 1) {
+            poi.getLocation().setAltitude(10.0); 
             arel.Events.setListener(poi, function(obj, type, params){handlePoiCallventMigas(obj, type, params);});
             // It's a website
         } else if ( id % 3 == 2) { 
