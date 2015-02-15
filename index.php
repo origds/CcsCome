@@ -2,21 +2,14 @@
 require 'restaurant.php';
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
-
-// Some variables
-$server   = '127.0.0.1';
-$username = '0910336';
-$password = '0910336';
-$db_name  = 'ra';
-
 // Connect to mysql database
-$conn = mysql_connect($server, $username, $password); 
+$conn = mysql_connect(SERVER, USERNAME, PASSWORD); 
 // Check mysql connection
 if (!$conn) {
     die("Connection failed: " . mysql_error()); 
 }
 // Selecting a database
-$db = mysql_select_db($db_name, $conn); 
+$db = mysql_select_db(DB_NAME, $conn); 
 // Checking selection
 if (!$db) {
     die("Could not select database: " . mysql_error()); 
@@ -35,6 +28,8 @@ foreach($restaurants as $res) {
 }
 
 RestaurantInfo::stopRendering(); 
+
+var_dump($_ENV); 
 mysql_close(); 
 
 ?>

@@ -1,6 +1,15 @@
 <?php 
-define("RESTAURANTS", "0910336_restaurant");
-define("DISHES", "0910336_dish");
+//Tables names
+define("RESTAURANTS", "restaurant");
+define("DISHES", "dish");
+
+// Some variables
+define("SERVER"  , $_SERVER['SERVER_ADDR']);
+define("USERNAME", '0910336');
+define("PASSWORD", '0910336');
+define("DB_NAME", 'ra');
+
+
 
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
@@ -204,7 +213,7 @@ class Restaurant {
         $rest->n_users = $row['total_users']; 
 
         // Query to get all dishes associated to that restaurant
-        $queryDish = 'SELECT * FROM '.DISHES.' WHERE restaurant_id = "'.$res->id.'";';
+        $queryDish = 'SELECT * FROM '.DISHES.' WHERE restaurant_id = "'.$rest->id.'";';
         $resultDish = mysql_query($queryDish); 
         if (!$resultDish) {
             die("Query failed: " . mysql_error()); 
@@ -212,7 +221,7 @@ class Restaurant {
 
         while ($rowDish = mysql_fetch_array($resultDish)) {
             $dish = new Dish($rowDish['name'], $rowDish['picture']);
-            array_push($res->dishes, $dish); 
+            array_push($rest->dishes, $dish); 
         }
 
         return $rest; 
@@ -269,6 +278,8 @@ Class RestaurantInfo {
             $res->description, // description
             Restaurant::dish_to_array($res->dishes, "imageButton")
         ); 
+
+        $oObject->addParameter("restaurant_id", $res->id); 
         //output the object
         ArelXMLHelper::outputObject($oObject);
 
@@ -289,6 +300,7 @@ Class RestaurantInfo {
         );
 
         //add some parameters we will need with AREL
+        $oObject->addParameter("restaurant_id", $res->id); 
         $oObject->addParameter("description", "Visita nuestra pagina web");
         $oObject->addParameter("url", $res->website);
 
@@ -311,6 +323,7 @@ Class RestaurantInfo {
             array()
         );
         //add some parameters we will need with AREL
+        $oObject->addParameter("restaurant_id", $res->id); 
         $oObject->addParameter("phone", "tel:".$res->phone);
 
         ArelXMLHelper::outputObject($oObject);

@@ -22,12 +22,16 @@ arel.sceneReady(function() {
 });
 
 // TODO: Test this
-function rankRestaurant(obj, type, param) {
-    $.post("http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/controller.php?restaurant_id=" 
-            + obj.getParameter("restaurant_id") + "&score="+obj.getParameter("score"),
-            function(data) {
-                // Do something; 
-            });
+function handleRestaurantRanking(obj, type, param) {
+    rankRestaurant(obj.getParameter("restaurant_id"), obj.getParameter("score")); 
+}
+
+function rankRestaurant(id, score) {
+    $.post("/CcsCome/controller.php", { restaurant_id : id, score: score })
+     .done(function(data) {
+        alert(data); 
+    });
+
 }
 
 function handleCustomPoiEvent(obj, type, param)
