@@ -5,8 +5,7 @@ arel.sceneReady(function() {
 
     var object = arel.Scene.getObjects();
 
-    n = object.length; 
-
+    var n = object.length; 
     for (it = 0; it < n; ++it) {
         var poi = object[it]; 
 
@@ -14,9 +13,6 @@ arel.sceneReady(function() {
 
         // It's a contact
         if ( id % 3 == 1) {
-            poi.getLocation().setAltitude(10.0); 
-            poi.setVisibility(true, false, false);
-            arel.Debug.log(poi.getVisibility()); 
             arel.Events.setListener(poi, function(obj, type, params){handlePoiCallventMigas(obj, type, params);});
             // It's a website
         } else if ( id % 3 == 2) { 
@@ -24,6 +20,15 @@ arel.sceneReady(function() {
         }
     }
 });
+
+// TODO: Test this
+function rankRestaurant(obj, type, param) {
+    $.post("http://ra.ldc.usb.ve/0910336/09-10336/CcsCome/controller.php?restaurant_id=" 
+            + obj.getParameter("restaurant_id") + "&score="+obj.getParameter("score"),
+            function(data) {
+                // Do something; 
+            });
+}
 
 function handleCustomPoiEvent(obj, type, param)
 {
@@ -50,7 +55,7 @@ function handlePoiCallventMigas(obj, type, param)
     //check if there is tracking information available
     if(type && type === arel.Events.Object.ONTOUCHSTARTED)
     {
-        arel.Media.openWebsite("tel:00582122394895",true);
+        arel.Media.openWebsite(obj.getParameter("phone"),true);
     }
 };
 
