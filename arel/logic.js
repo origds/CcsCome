@@ -1,6 +1,6 @@
 arel.sceneReady(function() {
     //Just for Debuging purposes
-    arel.Debug.activate();
+    //arel.Debug.activate();
     arel.Debug.deactivateArelLogStream();
 
     var object = arel.Scene.getObjects();
