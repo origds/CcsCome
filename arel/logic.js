@@ -60,6 +60,6 @@ function handlePoiCallvent(obj, type, param)
     //check if there is tracking information available
     if(type && type === arel.Events.Object.ONTOUCHSTARTED)
     {
-        arel.Media.openWebsite(obj.getParameter("phone"),true);
+        arel.Media.openWebsite("tel:00582124837871",true);
     }
 };
