@@ -6,7 +6,7 @@
     	<script type="text/javascript" src="logic.js"></script>
     	    	
     	<style type="text/css">
-		{
+		* {
 			-webkit-highlight:           none;
 			-webkit-touch-callout :      none;
 			-webkit-user-select:         none;
@@ -28,8 +28,8 @@
 			background-color: #fff;
 			-webkit-border-radius: 8px;
 			font: normal normal bold 14px/normal Helvetica, Arial, sans-serif;
-			margin: 180px 30% 0px 30%;	
-			padding: 15px 0px 15px 0px;
+			margin: 150px 20% 0px 20%;	
+			padding: 10px 0px 10px 0px;
 			text-align: center;
 			opacity: 0.6;
 			-webkit-box-shadow: 2px 2px 4px #666;
@@ -50,7 +50,7 @@
 		.text
 		{
 			float: left;
-			text-align: left;
+			text-align: center;
 			padding: 10px;
 		}
 		
@@ -73,7 +73,9 @@
         	<div class="close" ontouchstart="$('#info').hide()">X</div>
         	<div class="text"></div>
         	<div class="buttons"></div>
-        	<div class="text">Star</div>
-        	<div class="buttons"></div>
+        	<div class="star">
+        		<img src="blackstar.png">
+        		<div class="rank" ontouchstart="$('#star').hide()"></div>
+        	</div>
         </div>	
 	</body>            

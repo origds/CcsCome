@@ -22,9 +22,9 @@ arel.sceneReady(function() {
 });
 
 // TODO: Test this
-function handleRestaurantRanking(obj, type, param) {
+/*function handleRestaurantRanking(obj, type, param) {
     rankRestaurant(obj.getParameter("restaurant_id"), obj.getParameter("score")); 
-}
+}*/
 
 function rankRestaurant(id, score) {
     $.post("/CcsCome/controller.php", { restaurant_id : id, score: score })
@@ -41,6 +41,7 @@ function handleCustomPoiEvent(obj, type, param)
     {
         $('#info .text').html(obj.getParameter("description"));
         $('#info .buttons').html("<div class=\"button\" onclick=\"arel.Media.openWebsite('" + obj.getParameter("url") + "')\">" + obj.getParameter("url") + "</div>");
+        $('#info .rank').html("<div class=\"button\" onclick=\"rankRestaurant('" + obj.getParameter("id") + "','" + "1" + "')\"><img class=\"star\" src=\"star.png\"></div>");)
         $('#info').show();
     }
 };
