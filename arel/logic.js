@@ -13,7 +13,7 @@ arel.sceneReady(function() {
 
         // It's a contact
         if ( id % 3 == 1) {
-            arel.Events.setListener(poi, function(obj, type, params){handlePoiCallvent(obj, type, params);});
+            arel.Events.setListener(poi, function(obj, type, params){handlePoiCallEvent(obj, type, params);});
             // It's a website
         } else if ( id % 3 == 2) { 
             arel.Events.setListener(poi, function(obj, type, params){handleCustomPoiEvent(obj, type, params);});
@@ -41,7 +41,7 @@ function handleCustomPoiEvent(obj, type, param)
     {
         $('#info .text').html(obj.getParameter("description"));
         $('#info .buttons').html("<div class=\"button\" onclick=\"arel.Media.openWebsite('" + obj.getParameter("url") + "')\">" + obj.getParameter("url") + "</div>");
-        $('#info .rank').html("<div class=\"button\" onclick=\"rankRestaurant('" + obj.getParameter("id") + "','" + "1" + "')\"><img class=\"star\" src=\"star.png\"></div>");)
+        //$('#info .rank').html("<div class=\"button\" onclick=\"rankRestaurant('" + obj.getParameter("id") + "','" + "1" + "')\"><img class=\"star\" src=\"star.png\"></div>");)
         $('#info').show();
     }
 };
@@ -55,11 +55,11 @@ function handlePoiSoundEvent(obj, type, param)
     }
 };
 
-function handlePoiCallvent(obj, type, param)
+function handlePoiCallEvent(obj, type, param)
 {
     //check if there is tracking information available
     if(type && type === arel.Events.Object.ONTOUCHSTARTED)
     {
-        arel.Media.openWebsite("tel:00582124837871",true);
+        arel.Media.openWebsite(obj.getParameter("phone"),true);
     }
 };
