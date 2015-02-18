@@ -5,10 +5,9 @@ define("DISHES", "dish");
 
 // Some variables
 define("SERVER"  , $_SERVER['SERVER_ADDR']);
-define("USERNAME", '0910336');
-define("PASSWORD", '0910336');
-define("DB_NAME", 'ra');
-
+define("USERNAME", 'juan');
+define("PASSWORD", 'bigmac5!');
+define("DB_NAME", 'RA');
 
 
 require_once './ARELLibrary/arel_xmlhelper.class.php';

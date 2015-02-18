@@ -29,7 +29,5 @@ foreach($restaurants as $res) {
 
 RestaurantInfo::stopRendering(); 
 
-var_dump($_ENV); 
 mysql_close(); 
-
 ?>
