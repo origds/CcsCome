@@ -50,18 +50,6 @@ function handleCustomPoiEvent(obj, type, param)
         $('#star3').show();
         $('#star3').html("<img style=\"width:20px;height:20px\" width=\"50\" heigh=\"50\" border=\"0\" src=\"../imagenes/blackstar.png\" ontouchstart=\"$('#star3').hide(); $('#star8').show();\">");
         $('#star8').html("<img style=\"width:20px;height:20px\" width=\"50\" heigh=\"50\" border=\"0\" src=\"../imagenes/star.png\">");
-        
-        $('#info .score').html("Calificacion: " + obj.getParameter("avg_score").toString());
-        if (($('#star6').is(':visible')) && ($('#star7').is(':visible')) && ($('#star8').is(':visible'))) {
-            rankRestaurant(obj.getParameter("restaurant_id"),3);
-            $('#info .score').html("Calificacion: " + obj.getParameter("avg_score").toString());
-        } else if (($('#star7').is(':visible')) && ($('#star8').is(':visible'))) {
-            rankRestaurant(obj.getParameter("restaurant_id"),2);
-            $('#info .score').html("Calificacion: " + obj.getParameter("avg_score").toString());
-        } else if (($('#star6').is(':visible'))) {
-            rankRestaurant(obj.getParameter("restaurant_id"),1);
-            $('#info .score').html("Calificacion: " + obj.getParameter("avg_score").toString());
-        }
 
     }
 };
