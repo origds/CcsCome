@@ -42,7 +42,11 @@ function handleCustomPoiEvent(obj, type, param)
         $('#info .buttons').html("<div class=\"button\" onclick=\"arel.Media.openWebsite('" + obj.getParameter("url") + "')\">" + obj.getParameter("url") + "</div>");
         //$('#info .rank').html("<div class=\"button\" onclick=\"rankRestaurant('" + obj.getParameter("id") + "','" + "1" + "')\"><img class=\"star\" src=\"star.png\"></div>");)
         $('#info').show();
-        $('#star').show();
+        $('#star1').show();
+        $('#star2').show();
+        $('#star3').show();
+        $('#star4').show();
+        $('#star5').show();
     }
 };
 
