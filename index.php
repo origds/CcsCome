@@ -1,6 +1,5 @@
 <?php
 require 'restaurant.php';
-require_once './ARELLibrary/arel_xmlhelper.class.php';
 
 // Connect to mysql database
 $conn = mysql_connect(SERVER, USERNAME, PASSWORD); 
@@ -29,5 +28,4 @@ foreach($restaurants as $res) {
 
 RestaurantInfo::stopRendering(); 
 
-mysql_close(); 
-?>
+mysql_close();

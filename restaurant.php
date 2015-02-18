@@ -1,15 +1,6 @@
 <?php 
-//Tables names
-define("RESTAURANTS", "restaurant");
-define("DISHES", "dish");
 
-// Some variables
-define("SERVER"  , $_SERVER['SERVER_ADDR']);
-define("USERNAME", 'juan');
-define("PASSWORD", 'bigmac5!');
-define("DB_NAME", 'RA');
-
-
+require_once 'config.php';
 require_once './ARELLibrary/arel_xmlhelper.class.php';
 
 // Class dish to handle dishes from the restaurant menu
@@ -302,6 +293,7 @@ Class RestaurantInfo {
         $oObject->addParameter("restaurant_id", $res->id); 
         $oObject->addParameter("description", "Visita nuestra pagina web");
         $oObject->addParameter("url", $res->website);
+        $oObject->addParameter("avg_score", $res->avg_score);
 
         //output the object
         ArelXMLHelper::outputObject($oObject);
@@ -329,4 +321,3 @@ Class RestaurantInfo {
         self::$id += 1; 
     }
 }
-?>
