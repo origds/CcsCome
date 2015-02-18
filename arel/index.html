@@ -48,6 +48,11 @@
 			float: left;
 		}
 
+		#star6
+		{
+			display: none;
+		}
+
 		.close
 		{
 			float: right;
@@ -86,7 +91,10 @@
         	<div class="buttons"></div>
         	<div id="stars">
 	        	<div id="star1">
-	        		<img style="width:20px;height:20px" width="50" heigh="50" border="0" src="../imagenes/blackstar.png" ontouchstart="$('#star1').hide()">
+	        		<img style="width:20px;height:20px" width="50" heigh="50" border="0" src="../imagenes/blackstar.png" ontouchstart="$('#star1').hide() $(#star6).show()">
+	        	</div>
+	        	<div id="star6">
+	        		<img style="width:20px;height:20px" width="50" heigh="50" border="0" src="../imagenes/blackstar.png">
 	        	</div>
 	        	<div id="star2">
 	        		<img style="width:20px;height:20px" width="50" heigh="50" border="0" src="../imagenes/blackstar.png" ontouchstart="$('#star2').hide()">
