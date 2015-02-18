@@ -35,4 +35,3 @@ if (isset($_POST['restaurant_id'])) {
 function update($rest) {
     $rest->update(); 
 }
-?>

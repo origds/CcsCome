@@ -29,7 +29,6 @@ arel.sceneReady(function() {
 function rankRestaurant(id, score) {
     $.post("/CcsCome/controller.php", { restaurant_id : id, score: score })
      .done(function(data) {
-        alert(data); 
     });
 
 }

@@ -320,4 +320,3 @@ Class RestaurantInfo {
         self::$id += 1; 
     }
 }
-?>
