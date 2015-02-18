@@ -45,8 +45,6 @@ function handleCustomPoiEvent(obj, type, param)
         $('#star1').show();
         $('#star2').show();
         $('#star3').show();
-        $('#star4').show();
-        $('#star5').show();
     }
 };
 
