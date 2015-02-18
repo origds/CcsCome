@@ -31,7 +31,7 @@ function rankRestaurant(id, score) {
      .done(function(data) {
     });
 
-}
+};
 
 function handleCustomPoiEvent(obj, type, param)
 {
@@ -40,11 +40,18 @@ function handleCustomPoiEvent(obj, type, param)
     {
         $('#info .text').html(obj.getParameter("description"));
         $('#info .buttons').html("<div class=\"button\" onclick=\"arel.Media.openWebsite('" + obj.getParameter("url") + "')\">" + obj.getParameter("url") + "</div>");
-        //$('#info .rank').html("<div class=\"button\" onclick=\"rankRestaurant('" + obj.getParameter("id") + "','" + "1" + "')\"><img class=\"star\" src=\"star.png\"></div>");)
         $('#info').show();
         $('#star1').show();
         $('#star2').show();
         $('#star3').show();
+        if (($('#star6').is(':visible')) && ($('#star7').is(':visible')) && ($('#star8').is(':visible'))) {
+            rankRestaurant(obj.getParameter("restaurant_id"),3);
+        } else if (($('#star7').is(':visible')) && ($('#star8').is(':visible'))) {
+            rankRestaurant(obj.getParameter("restaurant_id"),2);
+        } else if (($('#star8').is(':visible'))) {
+            rankRestaurant(obj.getParameter("restaurant_id"),1);
+        }
+        $('#info .score').html("Calificacion: " + obj.getParameter("avg_score"));
     }
 };
 
